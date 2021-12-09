@@ -104,8 +104,8 @@
                     // position and rotation now contain vector and quaternion in world space.
                     console.log(this.el.object3D.getWorldPosition(position));
                     console.log(this.el.object3D.getWorldQuaternion(quaternion));
-                    alert(this.el.object3D.getWorldQuaternion(quaternion));
-                    alert(this.el.object3D.getWorldPosition(position));
+                    alert(JSON.stringify(this.el.object3D.getWorldQuaternion(quaternion)));
+                    alert(JSON.stringify(this.el.object3D.getWorldPosition(position)));
                 };
             })()
         });
