@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <script
     src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
@@ -27,13 +27,13 @@
 </style>
 
 <body style="margin : 0px; overflow: hidden;">
-    <!-- minimal loader shown until image descriptors are loaded -->
+    
     <div class="arjs-loader">
         <div>Loading, please wait...</div>
     </div>
     <a-scene vr-mode-ui="enabled: false;" renderer="logarithmicDepthBuffer: true;" embedded
         arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
-        <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
+        we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server
         <a-nft type="nft"
             url="your-server/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex"
             smooth="true" smoothCount="10" smoothTolerance=".01" smoothThreshold="5">
@@ -44,6 +44,96 @@
         </a-nft>
         <a-entity camera></a-entity>
     </a-scene>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR-JS</title>
+    <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+    <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script> -->
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
+    <script>
+        /* AFRAME.registerComponent('camera-logger', {
+        
+        schema: {
+          timestamp: {type: 'int'},
+          seconds: {type: 'int'} // default 0
+        },
+      
+        log : function () {
+          var cameraEl = this.el.sceneEl.camera.el;
+          var rotation = cameraEl.getAttribute('rotation');
+          var worldPos = new THREE.Vector3();
+          worldPos.setFromMatrixPosition(cameraEl.object3D.matrixWorld);
+          console.log("Time: " + this.data.seconds 
+                      + "; Camera Position: (" + worldPos.x.toFixed(2) + ", " + worldPos.y.toFixed(2) + ", " + worldPos.z.toFixed(2) 
+                      + "); Camera Rotation: (" + rotation.x.toFixed(2) + ", " + rotation.y.toFixed(2) + ", " + rotation.z.toFixed(2) + ")");        
+        },
+      
+        play: function () {
+          this.data.timestamp = Date.now();
+          this.log();
+        },
+      
+        tick: function () {  
+          if (Date.now() - this.data.timestamp > 1000) {
+            this.data.timestamp += 1000;
+            this.data.seconds += 1;
+            this.log();
+          }
+        },
+      }); */
+        AFRAME.registerComponent('rotation-reader', {
+            //  We use IIFE (immediately-invoked function expression) to only allocate one
+            //  vector or euler and not re-create on every tick to save memory.
+
+            tick: (function () {
+                var position = new THREE.Vector3();
+                var quaternion = new THREE.Quaternion();
+
+                return function () {
+                    this.el.object3D.getWorldPosition(position);
+                    this.el.object3D.getWorldQuaternion(quaternion);
+                    // position and rotation now contain vector and quaternion in world space.
+                    console.log(this.el.object3D.getWorldPosition(position));
+                    console.log(this.el.object3D.getWorldQuaternion(quaternion));
+                    alert(this.el.object3D.getWorldQuaternion(quaternion));
+                    alert(this.el.object3D.getWorldPosition(position));
+                };
+            })()
+        });
+    </script>
+</head>
+
+<body>
+    <a-scene>
+        <a-entity camera rotation-reader></a-entity>
+    </a-scene>
+    <!-- <a-scene embedded arjs>
+        <a-marker preset="hiro">
+            <a-box position="0 0.5 0" material="color: red;">
+                <a-animation attribute="rotation" dur="3000" to="360 360 0" repeat="indefinite" easing="linear">
+                </a-animation>
+            </a-box>
+        </a-marker>
+        <a-entity camera look-controls rotation-reader></a-entity>
+    </a-scene> -->
+
+    <!-- <a-scene>
+        <a-entity id="cameraWrapper" position="0 2 10" rotation="0 0 0">
+            <a-camera listener></a-camera>
+        </a-entity>
+        <a-plane position="0 4 4" rotation="-90 0 -90" width="4" height="4" color="#7BC8A4"></a-plane>
+        <a-sky color="#ECECEC"></a-sky>
+    </a-scene> -->
+    <script src="js/index.js"></script>
 </body>
 
 </html>
