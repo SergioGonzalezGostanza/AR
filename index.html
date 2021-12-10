@@ -129,18 +129,15 @@
             /* alert(frontToBack);
             alert(leftToRight);
             alert(rotateDegrees); */
-            document.getElementById('cont1').innerHTML = 'frontToBack: ' + String(frontToBack)
+            /* document.getElementById('cont1').innerHTML = 'frontToBack: ' + String(frontToBack)
             document.getElementById('cont2').innerHTML = 'leftToRight: ' + String(leftToRight)
-            document.getElementById('cont3').innerHTML = 'rotateDegrees: ' + String(rotateDegrees)
-            /* if (parseFloat(frontToBack) > 30) {
-            } */
-            /* document.getElementById('cont-camera-obj').innerHTML = + 
-            '<a-scene embedded arjs>' + 
-                '<a-box position="0 0.5 0" material="color: red;">' + 
-                    ' <a-animation attribute="rotation" dur="3000" to="360 360 0" repeat="indefinite" easing="linear"></a-animation> ' + 
-                '</a-box>' + 
-                '<a-entity camera look-controls rotation-reader></a-entity>' +
-            '</a-scene>' */
+            document.getElementById('cont3').innerHTML = 'rotateDegrees: ' + String(rotateDegrees) */
+            if (parseFloat(frontToBack) > 30) {
+                document.getElementById('camera').innerHTML = +  
+                    '<a-box position="0 0.5 0" material="color: red;">' + 
+                        ' <a-animation attribute="rotation" dur="3000" to="360 360 0" repeat="indefinite" easing="linear"></a-animation> ' + 
+                    '</a-box>'
+            }
         };
     </script>
 </head>
@@ -183,11 +180,11 @@
 
     <a-scene>
         <a-entity id="cameraWrapper" position="0 2 10" rotation="0 0 0">
-            <a-camera listener>
-                <a-box position="0 0.5 0" material="color: red;">
+            <a-camera listener id="camera">
+                <!-- <a-box position="0 0.5 0" material="color: red;">
                     <a-animation attribute="rotation" dur="3000" to="360 360 0" repeat="indefinite" easing="linear">
                     </a-animation>
-                </a-box>
+                </a-box> -->
             </a-camera>
         </a-entity>
         <!-- <a-plane position="0 4 4" rotation="-90 0 -90" width="4" height="4" color="#7BC8A4"></a-plane> -->
