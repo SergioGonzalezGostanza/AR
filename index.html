@@ -132,13 +132,15 @@
             /* document.getElementById('cont1').innerHTML = 'frontToBack: ' + String(frontToBack)
             document.getElementById('cont2').innerHTML = 'leftToRight: ' + String(leftToRight)
             document.getElementById('cont3').innerHTML = 'rotateDegrees: ' + String(rotateDegrees) */
-            if (frontToBack < 30) {
-                document.getElementById('box').innerHTML = +  
-                    '<a-box position="0 0.5 0" material="color: red;">' + 
-                        ' <a-animation attribute="rotation" dur="3000" to="360 360 0" repeat="indefinite" easing="linear"></a-animation> ' + 
-                    '</a-box>'
+            // if (frontToBack < 30) {
+                /* setTimeout(() => {
+                    document.getElementById('box').innerHTML = +  
+                        '<a-box position="0 0.5 0" material="color: red;">' + 
+                            ' <a-animation attribute="rotation" dur="3000" to="360 360 0" repeat="indefinite" easing="linear"></a-animation> ' + 
+                        '</a-box>'
+                }, 10000); */
                     // alert(frontToBack)
-            }
+            // }
         };
     </script>
 </head>
@@ -182,13 +184,10 @@
     <a-scene>
         <a-entity id="cameraWrapper" position="0 2 10" rotation="0 0 0">
             <a-camera listener id="camera">
-                <div id="box" style="z-index: 999;">
-
-                </div>
-                <!-- <a-box position="0 0.5 0" material="color: red;">
+                <a-box position="0 0.5 0" material="color: red;">
                     <a-animation attribute="rotation" dur="3000" to="360 360 0" repeat="indefinite" easing="linear">
                     </a-animation>
-                </a-box> -->
+                </a-box>
             </a-camera>
         </a-entity>
         <!-- <a-plane position="0 4 4" rotation="-90 0 -90" width="4" height="4" color="#7BC8A4"></a-plane> -->
