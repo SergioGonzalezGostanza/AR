@@ -119,15 +119,19 @@
                 // beta: front back motion
                 var frontToBack = event.beta;
 
+
                 handleOrientationEvent(frontToBack, leftToRight, rotateDegrees);
             }, true);
         }
 
         var handleOrientationEvent = function (frontToBack, leftToRight, rotateDegrees) {
             // do something amazing
-            alert(frontToBack);
+            /* alert(frontToBack);
             alert(leftToRight);
-            alert(rotateDegrees);
+            alert(rotateDegrees); */
+            document.getElementById('cont1').innerHTML = 'frontToBack: ' + String(frontToBack)
+            document.getElementById('cont2').innerHTML = 'leftToRight: ' + String(leftToRight)
+            document.getElementById('cont3').innerHTML = 'rotateDegrees: ' + String(rotateDegrees)
         };
     </script>
 </head>
@@ -136,6 +140,11 @@
     <a-scene>
         <a-entity camera rotation-reader></a-entity>
     </a-scene>
+    <div style=" position: absolute; top: 0; z-index: 999;">
+        <div id="cont1"></div>
+        <div id="cont2"></div>
+        <div id="cont3"></div>
+    </div>
     <!-- <a-scene embedded arjs>
         <a-marker preset="hiro">
             <a-box position="0 0.5 0" material="color: red;">
