@@ -132,15 +132,15 @@
             /* document.getElementById('cont1').innerHTML = 'frontToBack: ' + String(frontToBack)
             document.getElementById('cont2').innerHTML = 'leftToRight: ' + String(leftToRight)
             document.getElementById('cont3').innerHTML = 'rotateDegrees: ' + String(rotateDegrees) */
-            if (parseFloat(frontToBack) > 30) {
-                document.getElementById('cont-camera-obj').innerHTML = + 
-                '<a-scene embedded arjs>' + 
-                    '<a-box position="0 0.5 0" material="color: red;">' + 
-                        ' <a-animation attribute="rotation" dur="3000" to="360 360 0" repeat="indefinite" easing="linear"></a-animation> ' + 
-                    '</a-box>' + 
-                    '<a-entity camera look-controls rotation-reader></a-entity>' +
-                '</a-scene>'
-            }
+            /* if (parseFloat(frontToBack) > 30) {
+            } */
+            document.getElementById('cont-camera-obj').innerHTML = + 
+            '<a-scene embedded arjs>' + 
+                '<a-box position="0 0.5 0" material="color: red;">' + 
+                    ' <a-animation attribute="rotation" dur="3000" to="360 360 0" repeat="indefinite" easing="linear"></a-animation> ' + 
+                '</a-box>' + 
+                '<a-entity camera look-controls rotation-reader></a-entity>' +
+            '</a-scene>'
         };
     </script>
 </head>
