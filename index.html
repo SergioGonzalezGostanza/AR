@@ -132,7 +132,7 @@
             /* document.getElementById('cont1').innerHTML = 'frontToBack: ' + String(frontToBack)
             document.getElementById('cont2').innerHTML = 'leftToRight: ' + String(leftToRight)
             document.getElementById('cont3').innerHTML = 'rotateDegrees: ' + String(rotateDegrees) */
-            if (frontToBack > 30) {
+            if (parseFloat(frontToBack) > 30) {
                 document.getElementById('cont-camera-obj').innerHTML = + 
                 '<a-scene embedded arjs>' + 
                     '<a-box position="0 0.5 0" material="color: red;">' + 
