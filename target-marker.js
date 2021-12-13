@@ -12,7 +12,7 @@ AFRAME.registerComponent('target-marker', {
                 primitive: 'sphere'
             })
 
-            newMark.setAttribute('material', 'color: red')
+            newMark.setAttribute('material', 'color: blue')
             newMark.setAttribute('scale', '.2 .2 .2')
             newMark.setAttribute('position', p)
             scene.appendChild(newMark)
