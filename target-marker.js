@@ -13,14 +13,14 @@ AFRAME.registerComponent('target-marker', {
             })
 
             newMark.setAttribute('material', 'color: blue')
-            newMark.setAttribute('scale', '.02 .02 .02')
+            newMark.setAttribute('scale', '.2 .2 .2')
             newMark.setAttribute('position', p)
             scene.appendChild(newMark)
         }
 
-        this.el.addEventListener(( 'ontouchstart' in window ), this.addMarker)
+        this.el.addEventListener('click', this.addMarker)
     },
     remove: function () {
-        this.el.removeEventListener(( 'ontouchstart' in window ), this.addMarker)
+        this.el.removeEventListener('click', this.addMarker)
     }
 })

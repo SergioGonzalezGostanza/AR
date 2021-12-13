@@ -59,7 +59,7 @@
     <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
     <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script> -->
     <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
-    <script src="target-marker.js"></script>
+    <script src="./target-marker.js"></script>
     <script>
         /* AFRAME.registerComponent('camera-logger', {
         
@@ -111,7 +111,7 @@
             })()
         }); */
 
-        function createBox() {
+        /* function createBox() {
             AFRAME.registerComponent('box', {
                 schema: {
                     width: { type: 'number', default: 1 },
@@ -120,9 +120,7 @@
                     color: { type: 'color', default: '#AAA' }
                 },
 
-                /**
-                 * Initial creation and setting of the mesh.
-                 */
+                // Initial creation and setting of the mesh.
                 init: function () {
                     var data = this.data;
                     var el = this.el;
@@ -140,9 +138,9 @@
                     el.setObject3D('mesh', this.mesh);
                 }
             });
-        }
+        } */
 
-        function asd() {
+        /* function asd() {
             var sceneEl = document.querySelector('a-scene');
 
             AFRAME.registerComponent('do-something-once-loaded', {
@@ -167,9 +165,9 @@
                 linearDamping: 0.005
             });
             sceneEl.appendChild(entityEl);
-        }
+        } */
 
-        AFRAME.registerComponent('query-selector-example', {
+        /* AFRAME.registerComponent('query-selector-example', {
             init: function () {
                 this.entities = document.querySelectorAll('.box');
             },
@@ -180,7 +178,7 @@
                     // Do something with entities.
                 }
             }
-        });
+        }); */
 
         if (window.DeviceOrientationEvent) {
             window.addEventListener("deviceorientation", function (event) {
@@ -199,70 +197,34 @@
                     createBox()
                     alert(frontToBack)
                 }
-                // handleOrientationEvent(frontToBack, leftToRight, rotateDegrees);
             }, true);
         }
 
-        var handleOrientationEvent = function (frontToBack, leftToRight, rotateDegrees) {
-            // do something amazing
-            /* alert(frontToBack);
-            alert(leftToRight);
-            alert(rotateDegrees); */
-            /* document.getElementById('cont1').innerHTML = 'frontToBack: ' + String(frontToBack)
-            document.getElementById('cont2').innerHTML = 'leftToRight: ' + String(leftToRight)
-            document.getElementById('cont3').innerHTML = 'rotateDegrees: ' + String(rotateDegrees) */
-            if (frontToBack < 30) {
-                // setTimeout(() => {
-                /* document.getElementById('sphere').innerHTML = +
-                    '<a-entity id="sphere" geometry="primitive: sphere" material="color: red; shader: flat" position="0 0.15 -5" light="type: point; intensity: 5" animation="property: position; easing: easeInOutQuad; dir: alternate; dur: 1000; to: 0 -0.10 -5; loop: true"></a-entity>' */
-                // }, 10000);
-                alert(frontToBack)
-            }
-        };
+        
     </script>
 </head>
 
 <body>
-    <!-- <a-scene>
-        <a-entity camera rotation-reader></a-entity>
-    </a-scene> -->
-
-    <div>
-        <!-- <div style="
-                position: absolute;
-                left: 40%;
-                top: 40%;
-                margin: 0 auto;
-                z-index: 9999;
-                width: 300px;
-                text-align: center;
-                color: black;
-                background: white;
-            ">
-            <div id="cont1"></div>
-            <div id="cont2"></div>
-            <div id="cont3"></div>
-        </div> -->
-        <div id="cont-camera-obj">
-
-        </div>
-
-    </div>
-    <a-scene embedded arjs target-marker>
-        <!-- <a-marker preset="hiro"> -->
-        <a-box position="50 -50 0" material="color: red;" target-marker>
+    <a-scene cursor="rayOrigin: mouse">
+        <a-box position="0 .1 -1.5" rotation="0 0 0" scale=".1 .1 .1" material="color: red;" target-marker><!-- 
             <a-animation attribute="rotation" dur="3000" to="360 360 0" repeat="indefinite" easing="linear">
-            </a-animation>
+            </a-animation> -->
         </a-box>
+        <a-entity id="rig">
+            
+            <a-entity camera position="0 0 0" look-controls wasd-controls></a-entity>
+            <a-cursor id="cursor" raycaster fuse="false" fusetimeout="3000"></a-cursor>
+        </a-entity>
+    </a-scene>
+    <a-scene embedded arjs>
+        <!-- <a-marker preset="hiro"> -->
+
         <!-- </a-marker> -->
         <!-- <a-entity camera look-controls rotation-reader></a-entity> -->
         <!-- <a-entity id="sphere" geometry="primitive: sphere" material="color: red; shader: flat" position="0 0.15 -5"
             light="type: point; intensity: 5"
             animation="property: position; easing: easeInOutQuad; dir: alternate; dur: 1000; to: 0 -0.10 -5; loop: true">
         </a-entity> -->
-        <div id="sphere">
-
-        </div>
     </a-scene>
 
     <!-- <a-scene>
