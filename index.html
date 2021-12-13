@@ -190,7 +190,7 @@
                 var leftToRight = event.gamma;
                 // beta: front back motion
                 var frontToBack = event.beta;
-                
+
                 if (frontToBack < 30) {
                     // setTimeout(() => {
                     /* document.getElementById('sphere').innerHTML = +
@@ -250,10 +250,10 @@
     </div>
     <a-scene embedded arjs target-marker>
         <!-- <a-marker preset="hiro"> -->
-        <!-- <a-box position="0 0.5 0" material="color: red;">
-                    <a-animation attribute="rotation" dur="3000" to="360 360 0" repeat="indefinite" easing="linear">
-                    </a-animation>
-                </a-box> -->
+        <a-box position="0 0.5 0" material="color: red;" target-marker>
+            <a-animation attribute="rotation" dur="3000" to="360 360 0" repeat="indefinite" easing="linear">
+            </a-animation>
+        </a-box>
         <!-- </a-marker> -->
         <!-- <a-entity camera look-controls rotation-reader></a-entity> -->
         <!-- <a-entity id="sphere" geometry="primitive: sphere" material="color: red; shader: flat" position="0 0.15 -5"
