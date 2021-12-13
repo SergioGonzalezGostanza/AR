@@ -110,6 +110,77 @@
             })()
         }); */
 
+        function createBox() {
+            AFRAME.registerComponent('box', {
+                schema: {
+                    width: { type: 'number', default: 1 },
+                    height: { type: 'number', default: 1 },
+                    depth: { type: 'number', default: 1 },
+                    color: { type: 'color', default: '#AAA' }
+                },
+
+                /**
+                 * Initial creation and setting of the mesh.
+                 */
+                init: function () {
+                    var data = this.data;
+                    var el = this.el;
+
+                    // Create geometry.
+                    this.geometry = new THREE.BoxBufferGeometry(data.width, data.height, data.depth);
+
+                    // Create material.
+                    this.material = new THREE.MeshStandardMaterial({ color: data.color });
+
+                    // Create mesh.
+                    this.mesh = new THREE.Mesh(this.geometry, this.material);
+
+                    // Set mesh on entity.
+                    el.setObject3D('mesh', this.mesh);
+                }
+            });
+        }
+
+        function asd() {
+            var sceneEl = document.querySelector('a-scene');
+
+            AFRAME.registerComponent('do-something-once-loaded', {
+                init: function () {
+                    // This will be called after the entity has properly attached and loaded.
+                    console.log('I am ready!');
+                },
+
+                tick: function () {
+                    // Don't call query selector in here, query beforehand.
+                    for (let i = 0; i < this.entities.length; i++) {
+                        // Do something with entities.
+                        console.log(JSON.stringify(this.entities));
+                    }
+                }
+            });
+
+            var entityEl = document.createElement('a-entity');
+            entityEl.setAttribute('dynamic-body', {
+                shape: 'box',
+                mass: 1.5,
+                linearDamping: 0.005
+            });
+            sceneEl.appendChild(entityEl);
+        }
+
+        AFRAME.registerComponent('query-selector-example', {
+            init: function () {
+                this.entities = document.querySelectorAll('.box');
+            },
+
+            tick: function () {
+                // Don't call query selector in here, query beforehand.
+                for (let i = 0; i < this.entities.length; i++) {
+                    // Do something with entities.
+                }
+            }
+        });
+
         if (window.DeviceOrientationEvent) {
             window.addEventListener("deviceorientation", function (event) {
                 // alpha: rotation around z-axis
@@ -118,9 +189,16 @@
                 var leftToRight = event.gamma;
                 // beta: front back motion
                 var frontToBack = event.beta;
-
-
-                handleOrientationEvent(frontToBack, leftToRight, rotateDegrees);
+                
+                if (frontToBack < 30) {
+                    // setTimeout(() => {
+                    /* document.getElementById('sphere').innerHTML = +
+                        '<a-entity id="sphere" geometry="primitive: sphere" material="color: red; shader: flat" position="0 0.15 -5" light="type: point; intensity: 5" animation="property: position; easing: easeInOutQuad; dir: alternate; dur: 1000; to: 0 -0.10 -5; loop: true"></a-entity>' */
+                    // }, 10000);
+                    createBox()
+                    alert(frontToBack)
+                }
+                // handleOrientationEvent(frontToBack, leftToRight, rotateDegrees);
             }, true);
         }
 
@@ -134,10 +212,10 @@
             document.getElementById('cont3').innerHTML = 'rotateDegrees: ' + String(rotateDegrees) */
             if (frontToBack < 30) {
                 // setTimeout(() => {
-                document.getElementById('sphere').innerHTML = +
-                    '<a-entity id="sphere" geometry="primitive: sphere" material="color: red; shader: flat" position="0 0.15 -5" light="type: point; intensity: 5" animation="property: position; easing: easeInOutQuad; dir: alternate; dur: 1000; to: 0 -0.10 -5; loop: true"></a-entity>'
+                /* document.getElementById('sphere').innerHTML = +
+                    '<a-entity id="sphere" geometry="primitive: sphere" material="color: red; shader: flat" position="0 0.15 -5" light="type: point; intensity: 5" animation="property: position; easing: easeInOutQuad; dir: alternate; dur: 1000; to: 0 -0.10 -5; loop: true"></a-entity>' */
                 // }, 10000);
-                // alert(frontToBack)
+                alert(frontToBack)
             }
         };
     </script>
@@ -169,18 +247,18 @@
         </div>
 
     </div>
-    <a-scene embedded arjs>
+    <a-scene embedded arjs target-marker>
         <!-- <a-marker preset="hiro"> -->
         <!-- <a-box position="0 0.5 0" material="color: red;">
                     <a-animation attribute="rotation" dur="3000" to="360 360 0" repeat="indefinite" easing="linear">
                     </a-animation>
                 </a-box> -->
         <!-- </a-marker> -->
-        <a-entity camera look-controls rotation-reader></a-entity>
-        <a-entity id="sphere" geometry="primitive: sphere" material="color: red; shader: flat" position="0 0.15 -5"
+        <!-- <a-entity camera look-controls rotation-reader></a-entity> -->
+        <!-- <a-entity id="sphere" geometry="primitive: sphere" material="color: red; shader: flat" position="0 0.15 -5"
             light="type: point; intensity: 5"
             animation="property: position; easing: easeInOutQuad; dir: alternate; dur: 1000; to: 0 -0.10 -5; loop: true">
-        </a-entity>
+        </a-entity> -->
         <div id="sphere">
 
         </div>
