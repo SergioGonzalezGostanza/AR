@@ -1,5 +1,6 @@
-cancelAnimationFrame.registerComponent('target-marker', {
+AFRAME.registerComponent('target-marker', {
     init: function() {
+        alert('target-marker')
         let el = this.el
 
         this.addMarker = function (e) {
