@@ -167,18 +167,36 @@
             sceneEl.appendChild(entityEl);
         } */
 
-        /* AFRAME.registerComponent('query-selector-example', {
-            init: function () {
-                this.entities = document.querySelectorAll('.box');
-            },
+        function createFloor() {
+            AFRAME.registerComponent('show-floor', {
+                init: function () {
+                    let scene = this.el;
+                    
+                    let newMark = document.createElement('a-plane')
+                    /* newMark.setAttribute('geometry', {
+                        primitive: 'plane'
+                    }) */
 
-            tick: function () {
-                // Don't call query selector in here, query beforehand.
-                for (let i = 0; i < this.entities.length; i++) {
-                    // Do something with entities.
-                }
-            }
-        }); */
+                    // newMark.setAttribute('material', 'color: blue')
+                    newMark.setAttribute('position', '0 0 -1.6')
+                    newMark.setAttribute('rotation', '-60 0 0')
+                    newMark.setAttribute('scale', '10 10 10')
+                    newMark.setAttribute('normal-texture-repeat', '10 10')
+                    newMark.setAttribute('normal-scale', '10 -10')
+                    newMark.setAttribute('src', 'img/texture-florr.jpg')
+                    newMark.setAttribute('normal-wrap', 'imgFloor')
+                    newMark.setAttribute('opacity', '0.5')
+                    scene.appendChild(newMark)
+                },
+
+                /* tick: function () {
+                    // Don't call query selector in here, query beforehand.
+                    for (let i = 0; i < this.entities.length; i++) {
+                        // Do something with entities.
+                    }
+                } */
+            });
+        }
 
         if (window.DeviceOrientationEvent) {
             window.addEventListener("deviceorientation", function (event) {
@@ -189,43 +207,50 @@
                 // beta: front back motion
                 var frontToBack = event.beta;
 
-                if (frontToBack < 30) {
+                if (frontToBack < 30 && frontToBack > 28) {
                     // setTimeout(() => {
                     /* document.getElementById('sphere').innerHTML = +
                         '<a-entity id="sphere" geometry="primitive: sphere" material="color: red; shader: flat" position="0 0.15 -5" light="type: point; intensity: 5" animation="property: position; easing: easeInOutQuad; dir: alternate; dur: 1000; to: 0 -0.10 -5; loop: true"></a-entity>' */
                     // }, 10000);
-                    createBox()
+                    // createBox()
                     alert(frontToBack)
                 }
             }, true);
         }
 
-        
+
     </script>
 </head>
 
 <body>
-    <a-scene cursor="rayOrigin: mouse">
-        <a-box position="0 .1 -1.5" rotation="0 0 0" scale=".1 .1 .1" material="color: red;" target-marker><!-- 
+    <a-scene cursor="rayOrigin: mouse" show-floor>
+        <a-assets>
+            <img id="imgFloor" src="img/texture-floor.jpg" alt="">
+        </a-assets>
+        <a-plane position="0 0 -1.6" rotation="-60 0 0" scale="10 10 10" normal-wrap="imgFloor"
+            normal-texture-repeat="10 10" normal-scale="10 -10" src="img/texture-floor.jpg" opacity="0.5">
+        </a-plane>
+        <a-box position="0 .1 -1.5" rotation="0 0 0" scale=".1 .1 .1" material="color: red;" target-marker>
+            <!-- 
             <a-animation attribute="rotation" dur="3000" to="360 360 0" repeat="indefinite" easing="linear">
             </a-animation> -->
         </a-box>
-        <a-entity id="rig">
+        <!-- <a-entity id="rig">
             
             <a-entity camera position="0 0 0" look-controls wasd-controls></a-entity>
             <a-cursor id="cursor" raycaster fuse="false" fusetimeout="3000"></a-cursor>
-        </a-entity>
+        </a-entity> -->
     </a-scene>
-    <a-scene embedded arjs>
-        <!-- <a-marker preset="hiro"> -->
+    <!-- <a-scene embedded arjs> -->
+    <!-- <a-marker preset="hiro"> -->
 
-        <!-- </a-marker> -->
-        <!-- <a-entity camera look-controls rotation-reader></a-entity> -->
-        <!-- <a-entity id="sphere" geometry="primitive: sphere" material="color: red; shader: flat" position="0 0.15 -5"
+    <!-- </a-marker> -->
+    <!-- <a-entity camera look-controls rotation-reader></a-entity> -->
+    <!-- <a-entity id="sphere" geometry="primitive: sphere" material="color: red; shader: flat" position="0 0.15 -5"
             light="type: point; intensity: 5"
             animation="property: position; easing: easeInOutQuad; dir: alternate; dur: 1000; to: 0 -0.10 -5; loop: true">
         </a-entity> -->
-    </a-scene>
+    <!-- </a-scene> -->
 
     <!-- <a-scene>
         <a-entity id="cameraWrapper" position="0 2 10" rotation="0 0 0">

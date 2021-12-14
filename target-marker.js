@@ -1,6 +1,6 @@
 AFRAME.registerComponent('target-marker', {
     init: function() {
-        alert('target-marker')
+        // alert('target-marker')
         let el = this.el
 
         this.addMarker = function (e) {
