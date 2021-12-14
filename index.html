@@ -184,7 +184,7 @@
                     newMark.setAttribute('scale', '10 10 10')
                     newMark.setAttribute('normal-texture-repeat', '10 10')
                     newMark.setAttribute('normal-scale', '10 -10')
-                    newMark.setAttribute('src', 'img/texture-florr.jpg')
+                    newMark.setAttribute('src', 'img/texture-floor.jpg')
                     newMark.setAttribute('normal-wrap', 'imgFloor')
                     newMark.setAttribute('opacity', '0.5')
                     scene.appendChild(newMark)
@@ -213,18 +213,18 @@
                     /* document.getElementById('sphere').innerHTML = +
                         '<a-entity id="sphere" geometry="primitive: sphere" material="color: red; shader: flat" position="0 0.15 -5" light="type: point; intensity: 5" animation="property: position; easing: easeInOutQuad; dir: alternate; dur: 1000; to: 0 -0.10 -5; loop: true"></a-entity>' */
                     // }, 10000);
-                    createFloor()
                     // alert(frontToBack)
+                    createFloor()
                 }
             }, true);
         }
-
+        
 
     </script>
 </head>
 
 <body>
-    <a-scene cursor="rayOrigin: mouse" show-floor>
+    <a-scene show-floor>
         <a-assets>
             <img id="imgFloor" src="img/texture-floor.jpg" alt="">
         </a-assets>
