@@ -61,6 +61,18 @@
     <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
     <script src="./target-marker.js"></script>
     <script>
+        console.stdlog = console.log.bind(console);
+        var log = []
+        console.logs = [];
+        console.log = function () {
+            console.logs.push(Array.from(arguments));
+            console.stdlog.apply(console, arguments);
+            log.push(Array.from(arguments));
+        }
+
+        setTimeout(() => {
+            document.getElementById('log').innerHTML = JSON.stringify(log)
+        }, 2000);
         /* AFRAME.registerComponent('camera-logger', {
         
         schema: {
@@ -174,7 +186,7 @@
                 init: function () {
                     // alert('createFloor')
                     let scene = this.el;
-                    
+
                     let newMark = document.createElement('a-plane')
                     /* newMark.setAttribute('geometry', {
                         primitive: 'plane'
@@ -216,17 +228,18 @@
                     /* document.getElementById('sphere').innerHTML = +
                         '<a-entity id="sphere" geometry="primitive: sphere" material="color: red; shader: flat" position="0 0.15 -5" light="type: point; intensity: 5" animation="property: position; easing: easeInOutQuad; dir: alternate; dur: 1000; to: 0 -0.10 -5; loop: true"></a-entity>' */
                     // }, 10000);
-                    alert(frontToBack)
+                    console.log(frontToBack)
                     createFloor()
                 }
             }, true);
         }
-        
+
 
     </script>
 </head>
 
 <body>
+    <div id="log" style="position: absolute; top: 30%; left: 30%; z-index: 999;"></div>
     <a-scene show-floor>
         <a-assets>
             <img id="imgFloor" src="img/texture-floor.jpg" alt="">
