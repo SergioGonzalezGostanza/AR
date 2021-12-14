@@ -169,7 +169,8 @@
 
         function createFloor() {
             AFRAME.registerComponent('show-floor', {
-                init: function () {
+                init: function () {ç
+                    alert('createFloor')
                     let scene = this.el;
                     
                     let newMark = document.createElement('a-plane')
@@ -212,7 +213,7 @@
                     /* document.getElementById('sphere').innerHTML = +
                         '<a-entity id="sphere" geometry="primitive: sphere" material="color: red; shader: flat" position="0 0.15 -5" light="type: point; intensity: 5" animation="property: position; easing: easeInOutQuad; dir: alternate; dur: 1000; to: 0 -0.10 -5; loop: true"></a-entity>' */
                     // }, 10000);
-                    // createBox()
+                    createFloor()
                     alert(frontToBack)
                 }
             }, true);
@@ -227,9 +228,9 @@
         <a-assets>
             <img id="imgFloor" src="img/texture-floor.jpg" alt="">
         </a-assets>
-        <a-plane position="0 0 -1.6" rotation="-60 0 0" scale="10 10 10" normal-wrap="imgFloor"
+        <!-- <a-plane position="0 0 -1.6" rotation="-60 0 0" scale="10 10 10" normal-wrap="imgFloor"
             normal-texture-repeat="10 10" normal-scale="10 -10" src="img/texture-floor.jpg" opacity="0.5">
-        </a-plane>
+        </a-plane> -->
         <a-box position="0 .1 -1.5" rotation="0 0 0" scale=".1 .1 .1" material="color: red;" target-marker>
             <!-- 
             <a-animation attribute="rotation" dur="3000" to="360 360 0" repeat="indefinite" easing="linear">
