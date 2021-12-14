@@ -61,16 +61,16 @@
     <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
     <script src="./target-marker.js"></script>
     <script>
-        console.stdlog = console.log.bind(console);
-        var log = []
-        console.logs = [];
-        console.log = function () {
-            console.logs.push(Array.from(arguments));
-            console.stdlog.apply(console, arguments);
-            log.push(Array.from(arguments));
-        }
-
+        
         setTimeout(() => {
+            console.stdlog = console.log.bind(console);
+            var log = []
+            console.logs = [];
+            console.log = function () {
+                console.logs.push(Array.from(arguments));
+                console.stdlog.apply(console, arguments);
+                log.push(Array.from(arguments));
+            }
             document.getElementById('log').innerHTML = JSON.stringify(log)
         }, 2000);
         /* AFRAME.registerComponent('camera-logger', {
