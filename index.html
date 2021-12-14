@@ -170,7 +170,7 @@
         function createFloor() {
             AFRAME.registerComponent('show-floor', {
                 init: function () {ç
-                    alert('createFloor')
+                    // alert('createFloor')
                     let scene = this.el;
                     
                     let newMark = document.createElement('a-plane')
@@ -214,7 +214,7 @@
                         '<a-entity id="sphere" geometry="primitive: sphere" material="color: red; shader: flat" position="0 0.15 -5" light="type: point; intensity: 5" animation="property: position; easing: easeInOutQuad; dir: alternate; dur: 1000; to: 0 -0.10 -5; loop: true"></a-entity>' */
                     // }, 10000);
                     createFloor()
-                    alert(frontToBack)
+                    // alert(frontToBack)
                 }
             }, true);
         }
